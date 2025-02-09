@@ -18,16 +18,16 @@ namespace LandOfDreamsAdminApp.Controllers
             HttpClient client = new HttpClient();
             string URL = "http://localhost:5095/api/Admin/GetAllReservations";
 
-            // Use async/await for non-blocking behavior
+            
             HttpResponseMessage response = await client.GetAsync(URL);
 
             if (!response.IsSuccessStatusCode)
             {
-                // Handle error response if needed
+                
                 throw new Exception("Failed to retrieve data from the API. Status code: " + response.StatusCode);
             }
 
-            // Use async/await for reading the response content
+            
             var data = await response.Content.ReadAsAsync<List<Reservation>>();
 
             return View(data);
